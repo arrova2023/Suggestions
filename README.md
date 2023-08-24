@@ -125,6 +125,7 @@ The tests that were carried out were the following:
 2. **Integration tests**:
    POSTMAN was used for these tests, specifically testing the same 6 locations used in the unit tests. These locations were consumed using the GET method. The following URLs correspond to the data recovery from the unit tests:
 
+   ```
     - Suggestions for London:
      URL: [https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304](https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304)
 
@@ -142,6 +143,6 @@ The tests that were carried out were the following:
 
    - Suggestions for Berlin:
      URL: [https://springgcp-396905.nn.r.appspot.com/suggestions?q=berlin&lat=39.53594&lon=-76.34829](https://springgcp-396905.nn.r.appspot.com/suggestions?q=berlin&lat=39.53594&lon=-76.34829)
-
+     ```
 
 Both the unit tests and integration tests produced consistent results, as the algorithm accurately generates responses based on each query.
