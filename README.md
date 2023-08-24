@@ -115,3 +115,32 @@ This is a data bank with location names, latitude, and longitude.
 **Suggests Application Tests:**
 Unit tests.
 
+## Testing
+
+The tests that were carried out were the following:
+
+1. **Unit tests**:
+   Junit was used for these tests, including 6 locations. The first 3 locations have a confidence level of 100%, while the last 3 locations have little confidence, tending towards 0.
+
+2. **Integration tests**:
+   POSTMAN was used for these tests, specifically testing the same 6 locations used in the unit tests. These locations were consumed using the GET method. The following URLs correspond to the data recovery from the unit tests:
+
+   - Suggestions for London:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304`
+
+   - Ajax Tips:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=ajax&lat=43.85012&lon=-79.03288`
+
+   - Suggestions for Bel Air:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=bel%20air&lat=39.53594&lon=-76.34829`
+
+   - Suggestions for Kingston:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=kingston&lat=39.53594&lon=-76.34829`
+
+   - Suggestions for Lyndon:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=lyndon&lat=39.53594&lon=-76.34829`
+
+   - Suggestions for Berlin:
+     URL: `https://springgcp-396905.nn.r.appspot.com/suggestions?q=berlin&lat=39.53594&lon=-76.34829`
+
+Both the unit tests and integration tests produced consistent results, as the algorithm accurately generates responses based on each query.
