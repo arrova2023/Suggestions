@@ -1,0 +1,5 @@
+com/gendra/suggests/SuggestionsController.class
+com/gendra/suggests/SuggestsRestApplication.class
+com/gendra/suggests/TermFrequencyCalculator.class
+com/gendra/suggests/CosineSimilarityCalculator.class
+com/gendra/suggests/HaversineDistanceCalculator.class

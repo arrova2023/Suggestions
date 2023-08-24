@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.gendra.suggests.SuggestsRestApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.679 s - in com.gendra.suggests.SuggestsRestApplicationTests
