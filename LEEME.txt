@@ -1,0 +1,107 @@
+API REST para sugerir ciudades cercanas; esto se hace en base al nombre de la ubicación, su latitud y longitud.
+
+URL de validación del consumo de la API REST:
+	Tipo: GET
+
+	http://localhost:8080/suggestions?q=london&lat=42.98339&lon=-81.23304
+
+
+Donde en la URL los valores:
+	q = <nombre de la ubicación> String
+	lat = <latitud> Float (>0)
+	lon = <longitud> Float(<0)
+
+
+Donde la respuesta generada por dicho consumo debe tener un formato similar al siguiente:
+[
+    {
+        "name": "london : America/Toronto",
+        "latitude": 42.98339,
+        "longitude": -81.23304,
+        "score": 1.0
+    },
+    {
+        "name": "london : America/New_York",
+        "latitude": 39.88645,
+        "longitude": -83.44825,
+        "score": 0.002552867223175697
+    },
+    {
+        "name": "london : America/New_York",
+        "latitude": 37.12898,
+        "longitude": -84.08326,
+        "score": 0.0014376255204344688
+    }
+]
+
+Explicación; en cada anidación de variables tenemos las siguientes variables:
+	"name": Nombre de la ubicación mas relacionada con la ubicación introducida por el usuario en la variable "q" en la URL.
+	"latitude" Latitud
+	"longitude" Longitud
+	"score": el nivel de confianza que indica si la ubicación introducida por el usuario es la correcta o no.
+
+Esta API REST sirve para detectar las ubicaciones mas cercanas con puntos de interés para un usuario y funciona de la siguiente manera:
+
+Se cuenta con una base de datos con nomrbes de ubicaciones y su respectiva latitud y longitud las miles de puntos de Canadá y Estados Unidos de América por lo que el servicio que se puede consumir mediante esta API REST está enfocado principalmente para usuarios norteamericanos, aunque realmente en dicha base de datos se pueden insertar las ubicaciones con puntos de interés situados a lo largo de todo el mundo, en el ejemplo anterior se ve como un usuario que buscaba una ubicación llamada "london" en las coordenadas 42.98339 lon=-81.23304 tuvo totalmente éxito al coincidir su hipótesis(donde el presuntamente creía que se encontraba la ubicación)  y además encontró 2 ubicaciones mas pero en ubicaciones distinas y mediante los scores vemos que debido a que la relacion del nombre de la ubicación con la latitud y la longitud establecida por el usuario no coinciden con otras ubicaciones, por lo que con este modelo computacional se puedo aprender automaticamente que la ubicación que el usuario conocía se encuentra en "Canadá", pero ¿Como logro realizar todo esto?
+
+Esto se realizo mediante un algoritmo basado en 2 etapas de extacción de características, la primera etapa se realizó mediante la función del Coseno y la segunda etapa se realizó mediante la funcion del SemiVerseno, a continuación se explica detalladamente la estructura de la API REST:
+
+Tomando en cuenta la estructura de nuestro banco/base de datos llamado "cities_canada-usa.tsv" la primera etapa de extración de características es:
+
+	1.- Coseno:
+		En esta primer etapa se emplea una técnica del Machine Learning muy utilizada en el área del Procesamiento de Lenguaje Natural principalmente para el análisis, búsqueda y recuperación de información la cual se le conoce como "Similitud Coseno", con esta medida de similitud se recibe el nombre de la ubicación introducido por el usuario(variable "q") y se compora con los nombres de todas las ubicaciones del banco de datos(cities_canada-usa.tsv) y si se encuentra 1 o mas ubicaciones con nombres relacionados(similares o idénticos) son recuperados, en caso contrario no se recupera nada. Al mismo tiempo tambiéns se recuperan sus respectivas variables "lat" y "lon" las cuales son transformadas mediante una función en la siguiente etapa.
+
+	2.- Semiverseno
+		Con esta última etapa se emplea la fórmula del SermiVerseno la cual tomando como marco de referencia "el radio de la tierra de 6371kms" emplea una función para generar automaticamente el grado de similitud/diferencia entre la latitud y longitud introducida por el usuario en comparación con la latitud y la longitud de las ubicaciones que fueron recuperadas en la etapa anterior(coseno).
+
+El diseño de esta API REST está basado completamente en un enfoque "geométrico" ya que para generar una medida de confianza(score) se utiliza 2 conceptos que son principalmente empleados para generar funciones trigonométricas, a continuación se van a explicar:
+
+	1.- Coseno:
+		La similitud coseno es una medida de la similitud existente entre dos vectores en un espacio que posee un producto interior con el que se evalúa el valor del coseno del ángulo comprendido entre ellos. Esta función trigonométrica proporciona un valor igual a 1 si el ángulo comprendido es cero, es decir si ambos vectores apuntan a un mismo lugar. Cualquier ángulo existente entre los vectores, el coseno arrojaría un valor inferior a uno. Si los vectores fuesen ortogonales el coseno se anularía, y si apuntasen en sentido contrario su valor sería -1. De esta forma, el valor de esta métrica se encuentra entre -1 y 1, es decir en el intervalo cerrado [-1,1].
+
+
+		Esta distancia se emplea frecuentemente en la búsqueda y recuperación de información representando las palabras (o documento) en un espacio vectorial. En minería de textos se aplica la similitud coseno con el objeto de establecer una métrica de semejanza entre textos.2​ En minería de datos se suele emplear como un indicador de cohesión de clústeres de textos. La similitud coseno no debe ser considerada como una métrica debido a que no cumple la desigualdad triangular.
+
+	2.- Semiverseno:
+		La fórmula del semiverseno es una importante ecuación para la navegación astronómica, en cuanto al cálculo de la distancia de círculo máximo entre dos puntos de un globo sabiendo su longitud y su latitud. Es un caso especial de una fórmula más general de trigonometría esférica, la ley de los semiversenos, que relaciona los lados y ángulos de los "triángulos esféricos".
+
+
+El arbol de directorios del proyecto es el siguiente:
+	Suggests
+	|________ src/main/java
+	|______________________ com.example.demo
+							|_______________ CosineSimilartyCalculator.java
+							|_______________ HaversineDistanceCalculator.java
+							|_______________ SuggestionsController.java
+							|_______________ SuggestsApplication.java
+							|_______________ TermFrequencyCalculator.java
+	|
+	|________ src/main/resources
+					   |_______________ cities_canada-usa.tsv
+	|
+	|________ src/test/java
+							|_______________ com.example.demo
+		   									 |_______________ SuggestsApplicationTests.java
+
+
+SuggestsApplication:
+	Clase principal del proyecto:
+
+TermFrequencyCalculator:
+	Antes de generar la Similitud Coseno entre la ciudad(q) y las ciudades del banco de datos.tsv las cadenas de texto correspondientes deben ser transformadas a vectores porque dicho cálculo no es posible realizarlo sobre cadenas de texto pero si las mismas se representan de forma numérica esto se puede hacer perfectamente.
+
+CosineSimilartyCalculator:
+	Una vez que el/los nombres de las ciudades en cuestion son representados en un plano vectorial estos pueden ser comparados mediante la Similitud Coseno mediante esta clase, si se encuentran ciudades en el .tsv relacionadas con la ciudad introducida por el usuario las mismas son recuperadas y mostradas.
+
+HaversineDistanceCalculator:
+	Una vez recuperadas las ubicaciones relacionadas se genera el Semiverseno o Harversine Distance entre la latitud y la longitud introducida por el usuario en la URL(valor "q") y las latitudes y longitudes de cada ubicación recuperada, despues de ello para genererar el nivel de "confianza" se orden de forma descendente(comenzando con la que tiene mayor similitud hasta la que menos similitud tiene), si se tiene una similitud de 1(osea del 100%) quiere decir que la ubicación es completamente valida y que se puede confiar en que ella existe, pero entre mas cercana sea a 0 quiere decir que la ubicación tiene poca probabilidad de estar relacionada con las intenciones del usuario y que no se confía en que dicha ubicación sea la que se quiere verificar.
+
+SuggestionsController:
+	Sirve para cargar el banco de datos(cities_canada-usa.tsv) y posterior a ello ejecutar primero el cálculo del Coseno y finalmente el Semiverseno.
+
+
+cities_canada-usa.tsv:
+	Banco de datos con nombres de ubicaciones, latitud y longitud.
+
+SuggestsApplicationTests:
+	Pruebas unitarias.
