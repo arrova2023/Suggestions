@@ -147,3 +147,5 @@ The tests that were carried out were the following:
 
 
 Both the unit tests and integration tests produced consistent results, as the algorithm accurately generates responses based on each query.
+
+Although this REST API is based on artificial intelligence concepts and at the same time on a service-oriented architecture, by making use of both software engineering approaches, it is obtained that the approach of this solution is "multiparadigmatic" which is currently a new concept/term development which is called "Computer-Assisted Congration" which is a computational approach/paradigm for solving objectives through microservices based on concepts of machine learning, automatic learning and neural networks, currently this project to started new lines of research for the generation of information and natural language processing, if this project is going to continue developing APIs based on this new concept "Computer Aided Cognition".
