@@ -7,9 +7,9 @@ URL de validación del consumo de la API REST:
 
 
 Donde en la URL los valores:
-	q = <nombre de la ubicación> String
-	lat = <latitud> Float (>0)
-	lon = <longitud> Float(<0)
+	q = london
+	lat = 42.98339
+	lon = -81.23304
 
 
 Donde la respuesta generada por dicho consumo debe tener un formato similar al siguiente:

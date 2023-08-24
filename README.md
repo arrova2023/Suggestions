@@ -12,9 +12,9 @@ https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=
 
 **URL Parameter Values**
 
-- `q`: Location name (String)
-- `lat`: Latitude (Float > 0)
-- `lon`: Longitude (Float < 0)
+- `q`: london
+- `lat`: 42.98339
+- `lon`: -81.23304
 
 **Response Format**
 
