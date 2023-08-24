@@ -85,22 +85,22 @@ Learn more about Semiversene: https://es.wikipedia.org/wiki/F%C3%B3rmula_del_sem
 
 The project directory tree is as follows:
 ```
-Suggests
-|________ src/main/java
-|______________________ com.example.demo
-|_______________________________ CosineSimilartyCalculator.java
-|_______________________________ HaversineDistanceCalculator.java
-|_______________________________ SuggestionsController.java
-|_______________________________ SuggestsApplication.java
-|_______________________________ TermFrequencyCalculator.java
-|
-|________ src/main/resources
-|______________________ cities_canada-usa.tsv
-|
-|________ src/test/java
-|______________________ com.example.demo
-|_______________________________ SuggestsApplicationTests.java
-
+Suggests______________________________________________________________.
+|________ src/main/java                                               |
+|______________________ com.gendra.sugests                            | 
+|                               |-CosineSimilartyCalculator.java      |
+|                               |-HaversineDistanceCalculator.java    |
+|                               |-SuggestionsController.java          |
+|                               |-SuggestsApplication.java            |
+|                               |-TermFrequencyCalculator.java        |   
+|                                                                     |
+|________ src/main/resources                                          |
+|                       |cities_canada-usa.tsv                        |
+|                                                                     |
+|________ src/test/java                                               |
+|                     |com.example.demo                               |
+|                               |SuggestsApplicationTests.java        |
+|_____________________________________________________________________|
 ```
 
 **Suggests Application**:
