@@ -55,6 +55,7 @@ latitude: Latitude
 longitude: Longitude
 
 score: The confidence level indicating whether the location entered by the user is correct or not.
+
 This REST API is used to detect the closest locations with points of interest for a user and works as follows:
 
 There is a database with names of locations and their respective latitude and longitude, containing thousands of points in Canada and the United States of America. While the service primarily focuses on North American users, the database can accommodate locations with points of interest worldwide. In the example provided, a user looking for a location called "london" at the coordinates 42.98339 latitude and -81.23304 longitude had a successful match with their query. Additionally, 2 more locations were found, but in different areas. The scores indicate that the relationship of the location name with the latitude and longitude entered by the user does not match other locations. This computational model automatically learns that the user's known location is in "Canada."
@@ -65,7 +66,7 @@ Feature Extraction
 Taking into account the structure of the database named "cities_canada-usa.tsv," the first stage of feature extraction involves two techniques:
 
 1. Cosine:
-In this stage, the Cosine Similarity technique is used to analyze, search, and retrieve information. The user-entered location name (q) is compared with the names of all locations in the database (cities_canada-usa.tsv). If one or more locations with related names (similar or identical) are found, they are retrieved. Alongside, their respective latitude and longitude (lat and lon) are also recovered.
+In this first stage, a Machine Learning technique widely used in the Natural Language Processing area is used, mainly for the analysis, search and retrieval of information, which is known as "Cosine Similarity", with this measure of similarity the location name entered by the user (variable "q") and is made up of the names of all the locations in the database (cities_canada-usa.tsv) and if 1 or more locations are found with related names (similar or identical ) ) are retrieved, otherwise nothing is retrieved. At the same time, their respective variables "lat" and "lon" are also recovered, which are transformed by a function in the next stage.
 
 Learn more about Cosine Similarity: https://es.wikipedia.org/wiki/Similitud_coseno#:~:text=El%20Coseno%20Suave%E2%80%8B%20es,similitud%20entre%20pares%20de%20caracter%C3%ADsticas
 
@@ -125,7 +126,7 @@ The tests that were carried out were the following:
 2. **Integration tests**:
    POSTMAN was used for these tests, specifically testing the same 6 locations used in the unit tests. These locations were consumed using the GET method. The following URLs correspond to the data recovery from the unit tests:
 
-   
+
     - Suggestions for London:
      URL: [https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304](https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304)
 
