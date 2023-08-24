@@ -64,7 +64,8 @@ Taking into account the structure of the database named "cities_canada-usa.tsv,"
 1. Cosine:
 In this stage, the Cosine Similarity technique is used to analyze, search, and retrieve information. The user-entered location name (q) is compared with the names of all locations in the database (cities_canada-usa.tsv). If one or more locations with related names (similar or identical) are found, they are retrieved. Alongside, their respective latitude and longitude (lat and lon) are also recovered.
 
-Learn more about Cosine Similarity: https://es.wikipedia.org/wiki/Similitud_coseno#:~:text=El%20Coseno%20Suave%E2%80%8B%20es,similitud%20entre%20pares%20de%20caracter%C3%ADsticas.
+Learn more about Cosine Similarity: https://es.wikipedia.org/wiki/Similitud_coseno#:~:text=El%20Coseno%20Suave%E2%80%8B%20es,similitud%20entre%20pares%20de%20caracter%C3%ADsticas
+
 2. Semiversene:
 In this stage, the Semiversene formula is used, which takes "the radius of the earth of 6371kms" as a frame of reference. It uses a function to automatically generate the degree of similarity/difference between the latitude and longitude entered by the user and the latitude and longitude of the locations retrieved in the previous stage (cosine).
 
