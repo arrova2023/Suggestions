@@ -148,3 +148,4 @@ The tests that were carried out were the following:
 
 Both the unit tests and integration tests produced consistent results, as the algorithm accurately generates responses based on each query.
 
+After 4 years as a software developer and practicing in the fields of information technology and scientific computing, I have gradually managed to develop a concept that we have named "Computer Aided Cognition" which is a paradigm/approach for solve computational problems using service-oriented architecture in combination with machine learning and neural networks, with which it is possible to automate decision making by making a more robust REST API in terms of complexity of algorithmic resolution, orienting the results to the optimization of the different types of tests that guarantee the reliability of a program.
