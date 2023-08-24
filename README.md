@@ -8,7 +8,7 @@ This REST API suggests nearby cities based on the name of the location, its lati
 
 **Type:** GET
 
-http://localhost:8080/suggestions?q=london&lat=42.98339&lon=-81.23304
+https://springgcp-396905.nn.r.appspot.com/suggestions?q=london&lat=42.98339&lon=-81.23304
 
 **URL Parameter Values**
 
