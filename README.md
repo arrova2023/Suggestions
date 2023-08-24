@@ -95,11 +95,11 @@ Suggests______________________________________________________________.
 |                               |-TermFrequencyCalculator.java        |   
 |                                                                     |
 |________ src/main/resources                                          |
-|                       |-cities_canada-usa.tsv                        |
+|                       |-cities_canada-usa.tsv                       |
 |                                                                     |
 |________ src/test/java                                               |
-|                     |-com.example.demo                               |
-|                               |-SuggestsApplicationTests.java        |
+|                     |-com.example.demo                              |
+|                               |-SuggestsApplicationTests.java       |
 |_____________________________________________________________________|
 ```
 
