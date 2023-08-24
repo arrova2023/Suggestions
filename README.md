@@ -49,8 +49,11 @@ Explanation
 In each nesting of variables, we have the following variables:
 
 name: Name of the location most closely related to the location entered by the user in the q variable in the URL.
+
 latitude: Latitude
+
 longitude: Longitude
+
 score: The confidence level indicating whether the location entered by the user is correct or not.
 This REST API is used to detect the closest locations with points of interest for a user and works as follows:
 
