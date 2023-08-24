@@ -137,3 +137,4 @@ Las pruebas que se relaizaron fueron las siguientes:
 
 Tanto en las pruebas unitarias como en las pruebas de integración el resultado fue el mnismo, pues el algoritmo genera la respuesta correctamente en base a cada consulta.
 
+despues de 4 años como desarrollador de software y practicando en los terrenos de las tecnologías de la información y el cómputo científico de manera paulatina he logrado desarrollar un concepto al que le hemos nombra "Cognición Asistida por Computadora" el cual es un paradigma/enfoque para solucionar problemas computacionales haciendo uso de la arquitectura orientada a servicios en combinación con el machine learning y las redes neuronales, con lo cual es posible automatizar la toma de decisiones haciendo una REST API mas robusta en términos de complejidad de resolución algorítmica orientando los resultados a la optimización de las distintos tipos de pruebas que garantizen la fiabilidad de un programa.
