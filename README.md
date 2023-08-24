@@ -90,24 +90,24 @@ Suggests
 
 ```
 
-Suggests Application:
+**Suggests Application**:
 Project main class:
 
-TermFrequencyCalculator:
+**TermFrequencyCalculator**:
 Before generating the Cosine Similarity between the city (q) and the cities of the database.tsv, the corresponding text strings must be transformed into vectors. This calculation cannot be performed on text strings, but it can be done if they are represented numerically.
 
-CosineSimilartyCalculator:
+**CosineSimilartyCalculator**:
 Once the city names are represented as vectors, they can be compared by Cosine Similarity using this class. If cities related to the city entered by the user are found in the .tsv file, they are recovered and displayed.
 
-HaversineDistanceCalculator:
+**HaversineDistanceCalculator**:
 After retrieving the related locations, the Haversine Distance is generated between the latitude and longitude entered by the user in the URL (value q) and the latitudes and longitudes of each retrieved location. The results are ordered in descending order, starting with the one with the greatest similarity and ending with the least similarity. A similarity of 1 (100%) means that the location is completely valid and can be trusted. A similarity closer to 0 indicates little probability of being related to the user's intentions and is not trusted to be the verified location.
 
-SuggestionsController:
-This controller is used to load the data bank (cities_canada-usa.tsv). It first executes the Cosine calculation and then the Semiversene calculation.
+**SuggestionsController:
+This controller is used to load the data bank (cities_canada-usa.tsv). It first executes the Cosine calculation and then the Semiversene calculation.**
 
-cities_canada-usa.tsv:
+**cities_canada-usa.tsv:**
 This is a data bank with location names, latitude, and longitude.
 
-Suggests Application Tests:
+**Suggests Application Tests:**
 Unit tests.
 
